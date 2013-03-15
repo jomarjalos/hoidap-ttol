@@ -78,6 +78,18 @@ em
 #header form .inputbox { margin: 2px 13px 2px 2px;}
 #header form .inputbox:focus { margin: 1px 11px 0 1px; }
 
+input.button,
+button.button,
+button.validate
+{
+	/*background:#FFFFFF url(../images/nature/arrow1.gif) no-repeat left top;*/
+	background: url(../images/button.png) no-repeat left top;
+	padding : 7px 20px 7px 18px;
+	color:#fff;
+	border : solid 1px #fff;
+
+}
+
 #header ul
 {
         display:block;
@@ -1756,7 +1768,7 @@ button.button,
 button.validate
 {
         cursor:pointer;
-        padding:3px 5px 3px 7px ;
+        padding: 10px 26px 7px 18px;
         font-weight:bold;
         line-height:1.2em;
         font-family:arial;

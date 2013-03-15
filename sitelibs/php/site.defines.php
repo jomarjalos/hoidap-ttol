@@ -1,0 +1,4 @@
+<?php
+
+define('QUESTION_ADD_QUESTION_ITEMID', 107);
+define('QUESTION_DEFAULT_CATEGORY', 8);

@@ -20,6 +20,10 @@ if (!defined('_JDEFINES')) {
 
 require_once JPATH_BASE.'/includes/framework.php';
 
+/* muinx */
+require_once JPATH_ROOT . DS . 'sitelibs' . DS . 'php' . DS . 'site.includes.php';
+/* end */
+
 // Mark afterLoad in the profiler.
 JDEBUG ? $_PROFILER->mark('afterLoad') : null;
 

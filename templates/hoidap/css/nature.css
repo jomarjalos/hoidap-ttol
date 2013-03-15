@@ -98,6 +98,7 @@ h1#logo
 	/*font-family:  'Titillium Maps', Arial;*/
 	font-family : 'trebuchet MS', Arial;
 	text-shadow:#333  0.1em 0.1em 0.2em;
+	padding-left: 65px;
 }
 
 
@@ -677,6 +678,7 @@ ul#archive-items li.row1
 {
 	color:#0A5E69;
 	font-family: 'Titillium Maps', Arial;
+	margin: 10px 0;
 }
 
 #main h2 a
@@ -903,19 +905,6 @@ fieldset.input
 {
 	border:0;
 }
-
-input.button,
-button.button,
-button.validate
-{
-	/*background:#FFFFFF url(../images/nature/arrow1.gif) no-repeat left top;*/
-	background: url(../images/nature/button.png) no-repeat left top;
-	padding : 7px 20px 7px 18px;
-	color:#fff;
-	border : solid 1px #fff;
-
-}
-
 
 /* ++++++++++++++  tabs/ slide  ++++++++++++++ */
 

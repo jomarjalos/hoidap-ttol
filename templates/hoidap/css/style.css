@@ -6,7 +6,17 @@
  * @license GNU/GPL, see LICENSE.php for full license.
 **/
 
-* { font-family: sans-serif; }
+* { font-family: sans-serif; font-size: 12px; }
+
+.clr, .clear { clear: both; }
+
+.float-left { float: left; }
+.float-right { float: right; }
+.margin-5 { margin: 5px 0;}
+
+.invalid { border: 1px solid red; }
+
+.question-logo { background: url('../images/question-logo.png') no-repeat transparent; display: block; position: absolute; width: 100px; height: 100px; left: 0; top: 15px; }
 
 div#jefaqpro-paginationarea div#je-pagination {
 	 text-align: center;
@@ -79,12 +89,14 @@ div#je-posted {
 	font-family: small-caption;
     font-size: 15px;
     font-weight: lighter;
-    text-align:right;
 }
 div#je-posted ul {
 	padding:0px;
 }
 
+div#je-posted ul.tags, div#je-posted ul.question-info { margin: 0; padding: 0; }
+div#je-posted ul.tags { float: left; }
+ul.question-info { float: right; font-weight: normal; font-size: 11px; }
 
 div#je-posted span#je-posteddate {
 	background: url(../images/date.gif) no-repeat left top;
@@ -112,7 +124,7 @@ div#je-posted span#je-posteddate {
     font-family: 'Titillium Maps',Arial;
     font-size: 1.6em;
     font-weight: normal;
-    margin: 12px;
+    margin: 15px 0;
     padding: 9px 0 11px 12px;
 }
 .backcolor1{
@@ -155,13 +167,20 @@ div#je-questions h1{
     padding:8px 0px 0px 10px;
     margin-left:4px;
 }
-div#wrapper1 div.ques-align{
+div#wrapper1 a.question-title, 
+div#wrapper1 a.question-title:hover, 
+div#wrapper1 a.question-title:active {
 	color:#474747;
 	font-family:inherit;
 	font-size:15.5px;
 	font-weight:bold;
 	padding-bottom:4px;
+	margin: 5px 0;
+	display: block;
+	background: none;
 }
+
+
 .tip-wrap{
    font-weight: bold;
    padding-top:0px;
@@ -536,6 +555,11 @@ div#je-ques{
     margin: 0px;
     padding-top: 7px;
 }
+.jeques-questions-home {
+	 background: url("../images/q-home-icon.png") no-repeat scroll 0 7px transparent;
+    margin: 0px;
+    padding-top: 7px;
+}
 .jeques-tags{
 	 background: url("../images/tag-icon.png") no-repeat scroll 0 7px transparent;
     margin: 0px;
@@ -582,20 +606,19 @@ div.ol-check{
     font-weight: bold;
     padding: 0 0 0 21px;
 }
-div.anws div.row1 div.ans {
-	border:1px solid #B8CAA1;
-	background-color:#EFF2EB;
-	 font-size: 14px;
-    font-weight: bold;
-    margin: 12px;
-    padding: 12px 0 0 12px;
+
+div.ans {
+	border: 1px solid rgb(240, 240, 240);
+	background-color: rgb(250, 250, 250);
+    margin: 12px 0;
+    padding: 12px 12px 0 12px;
 }
 div.anws div.row0 div.ans {
-	 background-color: #FDFBFC;
+	background-color: #FDFBFC;
     border: 1px solid #B8CAA1;
     font-size: 14px;
     font-weight: bold;
-    margin: 12px;
+    margin: 12px 0;
     padding: 12px 0 0 12px;
 }
 div#edit-ques{
@@ -712,9 +735,9 @@ div#al-ques ul li{
     /*margin: 0 0 8px;*/
 }
 #jform_caat,#jform_email,#jform_username{
-	padding:5px 5px 5px 0;
-    width: 27%;
+	width: 200px;
     margin: 0 0 9px;
+	border: 1px solid #CCC;
 }
 #jform_question-lbl{
 	margin-top:10px;
@@ -830,3 +853,41 @@ h2#no_data{
    padding: 6px;
    width: 220px;
 }
+
+div.je-questions { margin: 25px 0; }
+ul.tags li { margin-right: 5px !important;}
+ul.question-info li { margin-right: 10px !important; }
+
+input[type="text"] { padding: 5px; }
+
+textarea.post-answer { width: 100%; height: 100px; }
+
+ul.answers { margin: 0 !important; padding: 0 10px !important; }
+
+ul.question-info { font-weight: normal; }
+
+#post-question input.t, 
+#post-answer input.t { padding: 1px 5px; font-weight: bold; font-size: 10px; cursor: pointer; border: 1px solid #B7B7B9; }
+#post-question input.tag { padding: 3px; width: 705px; }
+#post-question textarea { width: 705px; padding: 5px; }
+#post-answer textarea { width: 685px; padding: 5px; }
+div#footer { border-top: 1px dashed #CCC; color: #EF7715; }
+
+div.question-content { border-top: 1px dashed #CCC; margin: 20px 0; padding-top: 10px; }
+
+pre { 
+	padding: 15px;
+	margin-bottom: 10px;
+	background-color: #eeeeee;
+	overflow: auto;
+	width: auto;
+	width: 650px !ie7;
+	padding-bottom: 20px !ie7;
+	max-height: 600px;
+}
+
+code { background: #EEE; }
+
+quote { border: 1px dashed #BBABA8; margin-left: 30px; display: block; padding: 10px; }
+
+pre.prettyprint { border: none !important; padding: 10px !important; }

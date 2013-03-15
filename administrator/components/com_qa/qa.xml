@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" method="upgrade">
+	<name>com_qa</name>
+	<author>muinx</author>
+	<creationDate>Dec 2012</creationDate>
+	<copyright>(C) 2005 - 2012 Open Source Matters. All rights reserved.
+	</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>nguyenxuanmui@gmail.com</authorEmail>
+	<authorUrl>www.thongtinonline.net</authorUrl>
+	<version>2.5.0</version>
+	<description>QA Component</description>
+
+	<files folder="site">
+		<filename>banners.php</filename>
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<filename>router.php</filename>
+		<folder>helpers</folder>
+		<folder>models</folder>
+	</files>
+	<administration>
+		<menu img="class:banners">com_qa</menu>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>banners.php</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB.com_qa.ini</language>
+			<language tag="en-GB">language/en-GB.com_qa.sys.ini</language>
+		</languages>
+	</administration>
+</extension>
+
