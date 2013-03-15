@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
  * @subpackage	com_qa
  * @since 1.5
  */
-class QAViewCategory extends JViewLegacy
+class QAViewMy_Questions extends JViewLegacy
 {
 	protected $items;
 	protected $category;
@@ -24,7 +24,7 @@ class QAViewCategory extends JViewLegacy
 	{		
 		$items		= $this->get('Items');
 //		$category	= $this->get('Category');
-		$this->pagination = $this->get('Pagination');
+		$pagination = $this->get('Pagination');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {

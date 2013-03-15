@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
  * @subpackage	com_qa
  * @since 1.5
  */
-class QAViewCategory extends JViewLegacy
+class QAViewTags extends JViewLegacy
 {
 	protected $items;
 	protected $category;
@@ -30,13 +30,6 @@ class QAViewCategory extends JViewLegacy
 		if (count($errors = $this->get('Errors'))) {
 			JError::raiseError(500, implode("\n", $errors));
 			return false;
-		}
-
-		// Compute the article slugs and prepare introtext (runs content plugins).
-		for ($i = 0, $n = count($items); $i < $n; $i++)
-		{
-			$item = &$items[$i];
-			$item->slug = $item->alias ? ($item->id . ':' . $item->alias) : $item->id;
 		}
 		
 		$this->items = $items;

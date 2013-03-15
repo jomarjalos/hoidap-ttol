@@ -891,3 +891,10 @@ code { background: #EEE; }
 quote { border: 1px dashed #BBABA8; margin-left: 30px; display: block; padding: 10px; }
 
 pre.prettyprint { border: none !important; padding: 10px !important; }
+
+p.tag { margin: 10px 0; }
+
+div.je-questions-tags ul.tags { margin: 0; padding: 0 !important; margin-top: 30px !important; }
+div.je-questions-tags ul.tags li { float: left; width: 170px; margin-bottom: 15px !important; }
+div.je-questions-tags ul.tags li a { padding: 5px 7px; background: #EEE; }
+li.txt-tag { padding-left: 0 !important; }

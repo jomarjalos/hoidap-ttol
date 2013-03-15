@@ -31,12 +31,30 @@ defined('_JEXEC') or die;
 	</li>
 	<li>
 		<?php 
-		$active = 'image'; # $linkTags['active'] ? 'check' : 'image';
+		$active = $linkQuestion['active'] ? 'check' : 'image';
 		?>
 		<div class="<?php echo $active; ?>1">
 			<div class="<?php echo $active; ?>2">
 				<div class="<?php echo $active; ?>3">
-					<a href="<?php echo '#'; # $linkTags['url']; ?>">
+					<a href="<?php echo $linkQuestion['url']; ?>">
+						<div class="jeques-categories">
+							<div class="image4">
+								Câu hỏi						
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</li>
+	<li>
+		<?php 
+		$active = $linkTags['active'] ? 'check' : 'image';
+		?>
+		<div class="<?php echo $active; ?>1">
+			<div class="<?php echo $active; ?>2">
+				<div class="<?php echo $active; ?>3">
+					<a href="<?php echo $linkTags['url']; ?>">
 						<div class="jeques-tags">
 							<div class="image4">
 								Tags						

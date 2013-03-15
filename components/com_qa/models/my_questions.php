@@ -4,7 +4,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modellist');
 
-class QAModelCategory extends JModelList
+class QAModelMy_Questions extends JModelList
 {
 	/**
 	 * Method to auto-populate the model state.
@@ -21,11 +21,15 @@ class QAModelCategory extends JModelList
 		
 		$this->setState('list.limit', 50);
 		$this->setState('list.start', JRequest::getUInt('limitstart', 0));
-		$this->setState('filter.tag', JRequest::getString('tag', ''));
 	}
 	
 	public function getListQuery()
 	{
+		$user = JFactory::getUser();
+		
+		if ($user->guest)
+			return false;
+		
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
 		
@@ -36,13 +40,11 @@ class QAModelCategory extends JModelList
 				->select('u.username AS author')
 				->join('LEFT', '#__users u ON q.created_by = u.id')
 				->where('q.state = 1')
+				->where('q.created_by = ' . $user->id)
 				->order('q.id DESC')
 			;
 		
-		$tag = $this->getState('filter.tag');
-		
-		if ($tag)
-			$query->where ('q.tags LIKE "%'.$tag.'%"');
+//		echo str_replace('#__', 'jos_', $query);
 		
 		return $query;
 	}

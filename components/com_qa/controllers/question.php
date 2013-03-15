@@ -39,7 +39,9 @@ class QAControllerQuestion extends JControllerLegacy
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 		
-		$url = JRoute::_('index.php?option=com_qa&view=question&id=' . JRequest::getInt('question_id').':'.JRequest::getString('question_alias'), false);
+		$url = 'index.php?option=com_qa&view=question&id=' . JRequest::getInt('question_id').':'.JRequest::getString('question_alias').'&catid='.QUESTION_DEFAULT_CATEGORY.'&Itemid='.JRequest::getInt('Itemid');
+		
+		$url = JRoute::_($url);
 		
 		$post = JRequest::get('post');
 		

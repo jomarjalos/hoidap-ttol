@@ -57,39 +57,50 @@ class QAViewQuestion extends JViewLegacy
 		
 		$items = $pathway->get('_pathway');
 		
-		$arrPathway = array();
+//		$arrPathway = array();
 		
-		foreach ($items as $item)
-		{
-			$obj = new stdClass();
+//		foreach ($items as $item)
+//		{
+//			$obj = new stdClass();
+//			
+//			$obj->name = $item->name;
+//			$obj->link = '';
+//			
+//			$arrPathway[] = $obj;
+//			
+//			unset($obj);
+//		}
+//		
+//		$obj = new stdClass();
+//			
+//		$obj->name = $title;
+//		$obj->link = '';
+//		
+//		$arrPathway[] = $obj;
 			
-			$obj->name = $item->name;
-			$obj->link = '';
-			
-			$arrPathway[] = $obj;
-			
-			unset($obj);
-		}
+		$pathway->addItem($title);
 		
-		$obj = new stdClass();
-			
-		$obj->name = $title;
-		$obj->link = '';
-		
-		$arrPathway[] = $obj;
-			
-//		$pathway->addItem($title);
-		
-		$pathway->setPathway($arrPathway);
+//		$pathway->setPathway($arrPathway);
 
 		$this->document->setTitle($title);
+		
+		$output = str_replace(array("\r\n", "\r"), "\n", strip_tags($this->item->bbcode));
+		$lines = explode("\n", $output);
+		$new_lines = array();
+
+		foreach ($lines as $i => $line) {
+			if(!empty($line))
+				$new_lines[] = trim($line);
+		}
+		
+		$desc = implode($new_lines);
 
 		if ($this->item->metadesc)
 		{
 			$this->document->setDescription($this->item->metadesc);
 		}
 		else
-			$this->document->setDescription($this->item->content);
+			$this->document->setDescription($desc);
 
 		if ($this->item->metakey)
 		{

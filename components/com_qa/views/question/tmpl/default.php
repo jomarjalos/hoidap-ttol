@@ -15,9 +15,12 @@ function only1br($string)
 <h2><?php echo $item->title; ?></h2>
 <div id="je-posted">
 	<ul class="tags">
+		<li class="txt-tag">Tags: </li>
 		<?php foreach ($item->tags as $tag): ?>
 		<li>
-			<a href=""><?php echo $tag; ?></a>
+			<a title="<?php echo $tag; ?>" href="<?php echo JRoute::_('index.php?option=com_qa&view=category&tag=' . $tag . '&Itemid=' . QUESTION_CATEGORY_ITEMID, false); ?>">
+				<?php echo $tag; ?>
+			</a>
 		</li>
 		<?php endforeach; ?>
 	</ul>

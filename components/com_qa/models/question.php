@@ -48,7 +48,7 @@ class QAModelQuestion extends JModel
 		foreach ($rec->answers as & $answer)
 		{
 //			var_dump($answer->content);
-			$content = $parser->parse(htmlspecialchars($answer->content) );
+			$parser->parse(htmlspecialchars($answer->content) );
 //			var_dump($content);
 			$answer->content = $parser->getAsHtml();			
 		}
@@ -64,6 +64,9 @@ class QAModelQuestion extends JModel
 		
 		$parser->parse(htmlspecialchars($rec->content) );
 		$rec->bbcode = $parser->getAsHtml();
+		
+		// Update hits
+		$this->updateHits($rec->id);
 		
 		return $rec;
 	}
@@ -116,5 +119,19 @@ class QAModelQuestion extends JModel
 			die($db->getErrorMsg ());
 		
 		return true;
+	}
+	
+	public function updateHits($questionId)
+	{
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+		
+		$query->update('#__qa_questions')->set('hits = hits + 1')->where('id = ' . $questionId);
+		$db->setQuery($query);
+		
+		$db->query();
+		
+		if ($db->getErrorMsg())
+			die ($db->getErrorMsg ());
 	}
 }

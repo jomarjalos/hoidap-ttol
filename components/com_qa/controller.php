@@ -37,7 +37,7 @@ class QAController extends JControllerLegacy
 		$vName	= JRequest::getCmd('view', 'questions');
 		JRequest::setVar('view', $vName);
 		
-		$requiredLogin = array('post_question');
+		$requiredLogin = array('post_question', 'my_questions', 'my_question');
 		
 		if (in_array($vName, $requiredLogin) && $user->guest)
 		{

@@ -13,10 +13,10 @@ defined('_JEXEC') or die;
 require_once dirname(__FILE__).'/helper.php';
 
 $linkHome = modQAMenuHelper::getUrl(101);
-$linkQuestion = modQAMenuHelper::getUrl(103);
+$linkQuestion = modQAMenuHelper::getUrl(QUESTION_CATEGORY_ITEMID);
 $linkTips = modQAMenuHelper::getUrl(104);
 $linkTutorials = modQAMenuHelper::getUrl(105);
 $linkAddQuestion = modQAMenuHelper::getUrl(107);
-$linkTags = modQAMenuHelper::getUrl(104);
+$linkTags = modQAMenuHelper::getUrl(110);
 
 require JModuleHelper::getLayoutPath('mod_qa_menu', $params->get('layout', 'default'));
