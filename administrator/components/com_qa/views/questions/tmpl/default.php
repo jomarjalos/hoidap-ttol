@@ -60,8 +60,11 @@ $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 				<th width="10%">
 					<?php echo JHtml::_('grid.sort', 'JCATEGORY', 'category_title', $listDirn, $listOrder); ?>
 				</th>
-				<th width="10%">
+				<th width="1%">
 					<?php echo JHtml::_('grid.sort', 'Answers', 'anwers', $listDirn, $listOrder); ?>
+				</th>
+				<th width="1%">
+					<?php echo JHtml::_('grid.sort', 'Hits', 'hits', $listDirn, $listOrder); ?>
 				</th>
 				<th width="1%" class="nowrap">
 					<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
@@ -99,6 +102,8 @@ $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 							<?php echo $this->escape($item->title); ?>
 					<?php endif; ?>
 					
+					(by <strong><?php echo $item->created_user; ?></strong>)
+					
 					<p class="smallsub">
 						<?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias));?>
 					</p>
@@ -109,8 +114,11 @@ $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 				<td class="center">
 					<?php echo $this->escape($item->category_title); ?>
 				</td>
-				<td class="order">
+				<td class="right">
 					<?php echo $item->count_answers; ?>
+				</td>
+				<td class="right">
+					<?php echo $item->hits; ?>
 				</td>
 				<td class="center">
 					<?php echo $item->id; ?>

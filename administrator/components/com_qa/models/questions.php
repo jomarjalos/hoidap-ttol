@@ -31,6 +31,7 @@ class QAModelQuestions extends JModelList
 				'id', 'a.id',
 				'cid', 'a.cid', 'client_name',
 				'name', 'a.name',
+				'hits', 'a.hits',
 				'alias', 'a.alias',
 				'state', 'a.state',
 				'ordering', 'a.ordering',
@@ -87,7 +88,7 @@ class QAModelQuestions extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.id AS id, a.title, a.alias, a.content AS content,'.
+				'a.id AS id, a.title, a.alias, a.content AS content, a.hits, '.
 				'a.checked_out AS checked_out,'.
 				'a.checked_out_time AS checked_out_time, a.catid AS catid,' .
 				'a.state AS state, a.ordering AS ordering,'.
@@ -103,6 +104,10 @@ class QAModelQuestions extends JModelList
 //		$query->select('l.title AS language_title');
 //		$query->join('LEFT', $db->quoteName('#__languages').' AS l ON l.lang_code = a.language');
 
+		// Join over the users for the created user.
+		$query->select('u.name AS created_user');
+		$query->join('LEFT', '#__users AS u ON u.id=a.created_by');
+		
 		// Join over the users for the checked out user.
 		$query->select('uc.name AS editor');
 		$query->join('LEFT', '#__users AS uc ON uc.id=a.checked_out');
@@ -123,12 +128,6 @@ class QAModelQuestions extends JModelList
 		$categoryId = $this->getState('filter.category_id');
 		if (is_numeric($categoryId)) {
 			$query->where('a.catid = '.(int) $categoryId);
-		}
-
-		// Filter by client.
-		$clientId = $this->getState('filter.client_id');
-		if (is_numeric($clientId)) {
-			$query->where('a.cid = '.(int) $clientId);
 		}
 
 		// Filter by search in title
