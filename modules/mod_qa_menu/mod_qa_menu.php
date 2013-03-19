@@ -17,6 +17,6 @@ $linkQuestion = modQAMenuHelper::getUrl(QUESTION_CATEGORY_ITEMID);
 $linkTips = modQAMenuHelper::getUrl(104);
 $linkTutorials = modQAMenuHelper::getUrl(105);
 $linkAddQuestion = modQAMenuHelper::getUrl(107);
-$linkTags = modQAMenuHelper::getUrl(110);
+$linkTags = modQAMenuHelper::getUrl(QUESTION_TAGS_ITEMID);
 
 require JModuleHelper::getLayoutPath('mod_qa_menu', $params->get('layout', 'default'));
