@@ -106,5 +106,10 @@ class QAViewQuestion extends JViewLegacy
 		{
 			$this->document->setMetadata('keywords', $this->item->metakey);
 		}
+		else
+		{
+			$tags = implode(',', $this->item->tags);
+			$this->document->setMetadata('keywords', $tags);
+		}
 	}
 }
