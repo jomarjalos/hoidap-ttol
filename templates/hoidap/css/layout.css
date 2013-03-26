@@ -83,7 +83,9 @@ button.button,
 button.validate
 {
 	/*background:#FFFFFF url(../images/nature/arrow1.gif) no-repeat left top;*/
-	background: url(../images/button.png) no-repeat left top;
+	/*background: url(../images/button.png) no-repeat left top;*/
+	background: #2386AA;
+	border-radius: 6px;
 	padding : 7px 20px 7px 18px;
 	color:#fff;
 	border : solid 1px #fff;
