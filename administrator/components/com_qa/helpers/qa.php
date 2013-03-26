@@ -30,6 +30,18 @@ class QAHelper
 			'index.php?option=com_qa&view=questions',
 			$vName == 'questions'
 		);
+		
+		JSubMenuHelper::addEntry(
+			JText::_('Tips'),
+			'index.php?option=com_qa&view=tips',
+			$vName == 'tips'
+		);
+		
+		JSubMenuHelper::addEntry(
+			JText::_('Tutorials'),
+			'index.php?option=com_qa&view=tutorials',
+			$vName == 'tutorials'
+		);
 
 		JSubMenuHelper::addEntry(
 			JText::_('COM_QA_SUBMENU_CATEGORIES'),

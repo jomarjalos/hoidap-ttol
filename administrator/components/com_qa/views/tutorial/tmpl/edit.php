@@ -22,8 +22,8 @@ $jqueryFileUploadPath = JURI::root() . 'media/jquery-ui-upload/';
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
 	{
-		if (task == 'question.cancel' || document.formvalidator.isValid(document.id('question-form'))) {
-			Joomla.submitform(task, document.getElementById('question-form'));
+		if (task == 'tutorial.cancel' || document.formvalidator.isValid(document.id('tutorial-form'))) {
+			Joomla.submitform(task, document.getElementById('tutorial-form'));
 		}
 	}
 </script>
@@ -33,10 +33,10 @@ $jqueryFileUploadPath = JURI::root() . 'media/jquery-ui-upload/';
 	#jform_tags { font-size: 1.364em; }
 </style>
 
-<form action="<?php echo JRoute::_('index.php?option=com_qa&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="question-form" class="form-validate" enctype="multipart/form-data">
+<form action="<?php echo JRoute::_('index.php?option=com_qa&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="tutorial-form" class="form-validate" enctype="multipart/form-data">
 	<div class="width-60 fltlft">
 		<fieldset class="adminform">
-			<legend><?php echo empty($this->item->id) ? JText::_('New Tip') : JText::sprintf('Detail', $this->item->id); ?></legend>
+			<legend><?php echo empty($this->item->id) ? JText::_('New Tutorial') : JText::sprintf('Detail', $this->item->id); ?></legend>
 			<ul class="adminformlist">
 				<li><?php echo $this->form->getLabel('catid'); ?>
 				<?php echo $this->form->getInput('catid'); ?></li>
@@ -135,7 +135,7 @@ $jqueryFileUploadPath = JURI::root() . 'media/jquery-ui-upload/';
 	</div>
 
 <div class="width-40 fltrt">
-	<?php echo JHtml::_('sliders.start', 'question-sliders-'.$this->item->id, array('useCookie'=>1)); ?>
+	<?php echo JHtml::_('sliders.start', 'tutorial-sliders-'.$this->item->id, array('useCookie'=>1)); ?>
 
 	<?php echo JHtml::_('sliders.panel', JText::_('Publishing'), 'publishing-details'); ?>
 		<fieldset class="panelform">

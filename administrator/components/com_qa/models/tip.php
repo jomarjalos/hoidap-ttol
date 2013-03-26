@@ -13,13 +13,13 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.modeladmin');
 
 /**
- * Question model.
+ * Tip model.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_qa
  * @since       1.6
  */
-class QAModelQuestion extends JModelAdmin
+class QAModelTip extends JModelAdmin
 {
 	/**
 	 * @var    string  The prefix to use with controller messages.
@@ -93,7 +93,7 @@ class QAModelQuestion extends JModelAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getTable($type = 'Question', $prefix = 'QATable', $config = array())
+	public function getTable($type = 'Tip', $prefix = 'QATable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
@@ -111,14 +111,14 @@ class QAModelQuestion extends JModelAdmin
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Get the form.
-		$form = $this->loadForm('com_qa.question', 'question', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_qa.tip', 'tip', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form))
 		{
 			return false;
 		}
 
 		// Determine correct permissions to check.
-		if ($this->getState('question.id'))
+		if ($this->getState('tip.id'))
 		{
 			// Existing record. Can only edit in selected categories.
 			$form->setFieldAttribute('catid', 'action', 'core.edit');
@@ -161,17 +161,17 @@ class QAModelQuestion extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_qa.edit.question.data', array());
+		$data = JFactory::getApplication()->getUserState('com_qa.edit.tip.data', array());
 
 		if (empty($data))
 		{
 			$data = $this->getItem();
 
 			// Prime some default values.
-			if ($this->getState('question.id') == 0)
+			if ($this->getState('tip.id') == 0)
 			{
 				$app = JFactory::getApplication();
-				$data->set('catid', JRequest::getInt('catid', $app->getUserState('com_qa.questions.filter.category_id')));
+				$data->set('catid', JRequest::getInt('catid', $app->getUserState('com_qa.tips.filter.category_id')));
 			}
 		}
 
@@ -192,8 +192,8 @@ class QAModelQuestion extends JModelAdmin
 		$query = $db->getQuery(true);
 		
 		$query->select('qa.*')
-				->from('#__qa_question_answers qa')
-				->where('question_id = ' . (int) $item->id)
+				->from('#__qa_tip_answers qa')
+				->where('tip_id = ' . (int) $item->id)
 				->order('id DESC');
 		
 		// Join over the users for the author.
@@ -242,7 +242,7 @@ class QAModelQuestion extends JModelAdmin
 			if ($answer)
 			{
 				$answer = $db->quote($answer);
-				// insert to question_answers
+				// insert to tip_answers
 				$query = $db->getQuery(true);
 				
 				$state = isset($post['answer_state']) ? 1 : 0;
@@ -251,7 +251,7 @@ class QAModelQuestion extends JModelAdmin
 				
 				$values = $id . ', ' . $answer . ', ' . $state . ', ' . $created . ', ' . $created_by;
 				
-				$query->insert('#__qa_question_answers (question_id, content, state, created, created_by)');
+				$query->insert('#__qa_tip_answers (tip_id, content, state, created, created_by)');
 				$query->values($values);
 				
 				$db->setQuery($query);

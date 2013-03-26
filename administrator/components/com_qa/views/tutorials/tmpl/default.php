@@ -22,7 +22,7 @@ $canOrder	= $user->authorise('core.edit.state', 'com_qa.category');
 $saveOrder	= $listOrder=='ordering';
 $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_qa&view=questions'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_qa&view=tutorials'); ?>" method="post" name="adminForm" id="adminForm">
 	<fieldset id="filter-bar">
 		<div class="filter-search fltlft">
 			<label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
@@ -57,6 +57,9 @@ $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 				<th width="5%">
 					<?php echo JHtml::_('grid.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 				</th>
+				<th width="10%">
+					<?php echo JHtml::_('grid.sort', 'JCATEGORY', 'category_title', $listDirn, $listOrder); ?>
+				</th>
 				<th width="1%">
 					<?php echo JHtml::_('grid.sort', 'Answers', 'anwers', $listDirn, $listOrder); ?>
 				</th>
@@ -90,10 +93,10 @@ $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 				</td>
 				<td>
 					<?php if ($item->checked_out) : ?>
-						<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'questions.', $canCheckin); ?>
+						<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'tutorials.', $canCheckin); ?>
 					<?php endif; ?>
 					<?php if ($canEdit) : ?>
-						<a href="<?php echo JRoute::_('index.php?option=com_qa&task=question.edit&id='.(int) $item->id); ?>">
+						<a href="<?php echo JRoute::_('index.php?option=com_qa&task=tutorial.edit&id='.(int) $item->id); ?>">
 							<?php echo $this->escape($item->title); ?></a>
 					<?php else : ?>
 							<?php echo $this->escape($item->title); ?>
@@ -106,7 +109,10 @@ $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 					</p>
 				</td>
 				<td class="center">
-					<?php echo JHtml::_('jgrid.published', $item->state, $i, 'questions.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
+					<?php echo JHtml::_('jgrid.published', $item->state, $i, 'tutorials.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
+				</td>
+				<td class="center">
+					<?php echo $this->escape($item->category_title); ?>
 				</td>
 				<td class="right">
 					<?php echo $item->count_answers; ?>

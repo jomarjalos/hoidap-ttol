@@ -16,8 +16,10 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_ntrip')) {
 // Add script
 $doc = JFactory::getDocument();
 
-$doc->addScript(JURI::root() . 'media/qa/jquery-1.7.2.min.js');
-$doc->addScript(JURI::root() . 'components/com_qa/helpers/html/js/qa.js');
+$doc->addScript(JURI::root() . 'sitelibs/html/js/jquery-1.9.1.min.js');
+$doc->addScript(JURI::root() . 'sitelibs/html/js/sbbeditor.js');
+
+$doc->addScriptDeclaration('jQuery.noConflict();');
 
 // Helper
 require_once JPATH_COMPONENT.'/helpers/qa.php';
