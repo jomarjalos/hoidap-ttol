@@ -11,3 +11,4 @@
 2013-03-26	04:15:53	INFO	::1	Joomla FAILURE: 	Username and password do not match or you do not have an account yet.
 2013-03-26	04:17:03	INFO	::1	Joomla FAILURE: 	Tên đăng nhập và mât khẩu không đúng, hoặc bạn chưa có tài khoản tại Laptrinh.Pro.VN
 2013-03-26	04:21:39	INFO	::1	Joomla FAILURE: 	Tên đăng nhập và mât khẩu không đúng, hoặc bạn chưa có tài khoản tại Laptrinh.Pro.VN
+2013-04-18	09:24:40	INFO	::1	Joomla FAILURE: 	Mật khẩu không được để trống

@@ -58,10 +58,10 @@ endif;
 			}
 		</style>
 		<![endif]-->
-
-	</head>
+</head>
 
 	<body id="jetweetsdemo-theme" class="wrapper-theme3" cz-shortcut-listen="true">
+		
 		<div id="jetweetsdemo-main-wrapper">
 			<div>									
 				<div id="all">

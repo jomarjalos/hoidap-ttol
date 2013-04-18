@@ -9,7 +9,64 @@
 // no direct access
 defined('_JEXEC') or die;
 JHtml::_('behavior.keepalive');
+
+$facebook = new Facebook(array(
+								'appId'  => '492429447479171',
+								'secret' => '9925fea8d91e573f1a5d2a072c14c594',
+					));
+
+$user 	= JFactory::getUser();
+$userFB = $facebook->getUser();
+$onlyMerchant = false;
+
+if (JRequest::getString('option') == 'com_merchant' && in_array(JRequest::getString('view'), array('signin', 'orders', 'deals'))) {
+	$onlyMerchant = true;
+}
+
+if ($onlyMerchant && !$user->id) {
+	return;
+}
+
+$isLogedIn 	= false;
+$fbMe		= null;
+if ($user->id) {
+	$isLogedIn = true;
+} else {
+	if ($userFB) {
+		try {
+			// Proceed knowing you have a logged in user who's authenticated.
+			$fbMe = $facebook->api('/me');
+		} catch (FacebookApiException $e) {
+			$userFB = null;
+		}
+	}
+}
+
+$logoutUrl= '';
+
+if ($userFB) {
+	$logoutUrl	= $facebook->getLogoutUrl();
+} 
+
+$loginUrl	= $facebook->getLoginUrl(
+		array(
+				'scope' => 'email, publish_stream',
+				'redirect_uri' => JRoute::_(JURI::root() . 'index.php?option=com_users&task=registration.fbregistration', false)
+		)
+);
+
+
 ?>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<?php echo CFG_FACEBOOK_API_ID ?>";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <?php if ($type == 'logout') : ?>
 <form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form">
 <?php if ($params->get('greeting')) : ?>
@@ -72,6 +129,9 @@ JHtml::_('behavior.keepalive');
 		<li>
 			<a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">
 				<?php echo JText::_('MOD_LOGIN_REGISTER'); ?></a>
+		</li>
+		<li>
+			<div class="left"><a class="service" id="service-facebook" title="Đăng nhập qua tài khoản facebook" href="<?php echo $loginUrl ?>">Facebook</a></div>
 		</li>
 		<?php endif; ?>
 	</ul>
