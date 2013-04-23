@@ -195,6 +195,7 @@ class UsersControllerRegistration extends UsersController
 				$userFB = null;
 			}
 		}
+		
 	
 		$logoutUrl	= '';
 		$loginUrl	= '';
@@ -205,7 +206,7 @@ class UsersControllerRegistration extends UsersController
 			$loginUrl	= $facebook->getLoginUrl(
 					array(
 							'scope' => 'email, publish_stream',
-							'redirect_uri' => JURI::root() . JRoute::_('index.php?option=com_profile&task=customer.fbregistration', false)
+							'redirect_uri' => JURI::root() . JRoute::_('index.php?option=com_users&task=registration.fbregistration', false)
 					)
 			);
 			// TODO REQUEST LOGIN BEFORE SAVE FB ACCOUNT
@@ -221,6 +222,7 @@ class UsersControllerRegistration extends UsersController
 			$query->select('COUNT(*)')->from('#__users')->where('email = ' . $db->quote($fbMe['email']));
 			$db->setQuery($query);
 			$duplicate = (bool) $db->loadResult();
+			
 				
 			if (!$duplicate) {
 				$user = new JUser;
@@ -257,11 +259,11 @@ class UsersControllerRegistration extends UsersController
 			$credentials = array();
 			$credentials['username'] = $fbMe['email'];
 			$credentials['password'] = $fbMe['email'];
-				
+			
 			// Perform the log in.
 			if (true === $app->login($credentials)) {
 				// Success
-				$this->setRedirect(ProfileHelperRoute::getRouteView('profile'));
+				$this->setRedirect('index.php');
 				return true;
 			}
 		}

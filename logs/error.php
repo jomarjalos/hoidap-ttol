@@ -12,3 +12,9 @@
 2013-03-26	04:17:03	INFO	::1	Joomla FAILURE: 	Tên đăng nhập và mât khẩu không đúng, hoặc bạn chưa có tài khoản tại Laptrinh.Pro.VN
 2013-03-26	04:21:39	INFO	::1	Joomla FAILURE: 	Tên đăng nhập và mât khẩu không đúng, hoặc bạn chưa có tài khoản tại Laptrinh.Pro.VN
 2013-04-18	09:24:40	INFO	::1	Joomla FAILURE: 	Mật khẩu không được để trống
+2013-04-22	02:03:46	INFO	127.0.0.1	Facebook CANCELED: 	
+2013-04-22	02:04:44	INFO	127.0.0.1	Facebook CANCELED: 	
+2013-04-22	02:06:59	INFO	127.0.0.1	Facebook CANCELED: 	
+2013-04-22	02:08:16	INFO	127.0.0.1	Facebook CANCELED: 	
+2013-04-22	02:09:38	INFO	127.0.0.1	Facebook CANCELED: 	
+2013-04-22	02:10:50	INFO	127.0.0.1	Facebook CANCELED: 	

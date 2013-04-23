@@ -11,21 +11,15 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.keepalive');
 
 $facebook = new Facebook(array(
-								'appId'  => '492429447479171',
-								'secret' => '9925fea8d91e573f1a5d2a072c14c594',
+								'appId'  => CFG_FACEBOOK_API_ID,
+								'secret' => CFG_FACEBOOK_API_SECRET,
 					));
 
 $user 	= JFactory::getUser();
 $userFB = $facebook->getUser();
 $onlyMerchant = false;
 
-if (JRequest::getString('option') == 'com_merchant' && in_array(JRequest::getString('view'), array('signin', 'orders', 'deals'))) {
-	$onlyMerchant = true;
-}
 
-if ($onlyMerchant && !$user->id) {
-	return;
-}
 
 $isLogedIn 	= false;
 $fbMe		= null;
