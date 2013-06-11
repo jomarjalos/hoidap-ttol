@@ -125,7 +125,7 @@ $loginUrl	= $facebook->getLoginUrl(
 				<?php echo JText::_('MOD_LOGIN_REGISTER'); ?></a>
 		</li>
 		<li>
-			<div class="left"><a class="service" id="service-facebook" title="Đăng nhập qua tài khoản facebook" href="<?php echo $loginUrl ?>">Facebook</a></div>
+			<div class="left"><a class="service modal" id="service-facebook" title="Đăng nhập qua tài khoản facebook" href="<?php echo $loginUrl ?>">Facebook</a></div>
 		</li>
 		<?php endif; ?>
 	</ul>

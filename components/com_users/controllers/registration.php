@@ -190,12 +190,11 @@ class UsersControllerRegistration extends UsersController
 		if ($userFB) {
 			try {
 				// Proceed knowing you have a logged in user who's authenticated.
-				$fbMe = $facebook->api('/me');
+				$fbMe = $facebook->api('/' . $userFB);
 			} catch (FacebookApiException $e) {
 				$userFB = null;
 			}
 		}
-		
 	
 		$logoutUrl	= '';
 		$loginUrl	= '';

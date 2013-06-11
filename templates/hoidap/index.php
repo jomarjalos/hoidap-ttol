@@ -121,7 +121,7 @@ endif;
 						<div id="footer-sub">
 							<div id="footer">
 								<div class="footer1">
-									Copyright © <?php echo date('Y'); ?> laptrinh.pro.vn. All Rights Reserved.
+									Copyright &copy; <?php echo date('Y'); ?> laptrinh.pro.vn. All Rights Reserved.
 								</div>
 							</div>
 							<!-- end footer -->

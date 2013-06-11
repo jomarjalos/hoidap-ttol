@@ -120,7 +120,7 @@ abstract class BaseFacebook
   /**
    * Version.
    */
-  const VERSION = '3.2.0';
+  const VERSION = '3.2.2';
 
   /**
    * Signed Request Algorithm.
@@ -131,12 +131,10 @@ abstract class BaseFacebook
    * Default options for curl.
    */
   public static $CURL_OPTS = array(
-    CURLOPT_CONNECTTIMEOUT => 30,	// Default value is 10. Modify to 30
+    CURLOPT_CONNECTTIMEOUT => 10,
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_TIMEOUT        => 90,	// Default value is 60. Modify to 90
+    CURLOPT_TIMEOUT        => 60,
     CURLOPT_USERAGENT      => 'facebook-php-3.2',
-	CURLOPT_SSL_VERIFYPEER => false,	// Cong Nguyen Addmore
-	CURLOPT_SSL_VERIFYHOST => 2		// Cong Nguyen Addmore
   );
 
   /**
@@ -369,20 +367,20 @@ abstract class BaseFacebook
       // In any event, we don't have an access token, so say so.
       return false;
     }
-  
+
     if (empty($access_token_response)) {
       return false;
     }
-      
+
     $response_params = array();
     parse_str($access_token_response, $response_params);
-    
+
     if (!isset($response_params['access_token'])) {
       return false;
     }
-    
+
     $this->destroySession();
-    
+
     $this->setPersistentData(
       'access_token', $response_params['access_token']
     );
@@ -441,6 +439,11 @@ abstract class BaseFacebook
       // the JS SDK puts a code in with the redirect_uri of ''
       if (array_key_exists('code', $signed_request)) {
         $code = $signed_request['code'];
+        if ($code && $code == $this->getPersistentData('code')) {
+          // short-circuit if the code we have is the same as the one presented
+          return $this->getPersistentData('access_token');
+        }
+
         $access_token = $this->getAccessTokenFromCode($code, '');
         if ($access_token) {
           $this->setPersistentData('code', $code);
@@ -485,10 +488,10 @@ abstract class BaseFacebook
    */
   public function getSignedRequest() {
     if (!$this->signedRequest) {
-      if (isset($_REQUEST['signed_request'])) {
+      if (!empty($_REQUEST['signed_request'])) {
         $this->signedRequest = $this->parseSignedRequest(
           $_REQUEST['signed_request']);
-      } else if (isset($_COOKIE[$this->getSignedRequestCookieName()])) {
+      } else if (!empty($_COOKIE[$this->getSignedRequestCookieName()])) {
         $this->signedRequest = $this->parseSignedRequest(
           $_COOKIE[$this->getSignedRequestCookieName()]);
       }
@@ -526,6 +529,11 @@ abstract class BaseFacebook
     if ($signed_request) {
       if (array_key_exists('user_id', $signed_request)) {
         $user = $signed_request['user_id'];
+
+        if($user != $this->getPersistentData('user_id')){
+          $this->clearAllPersistentData();
+        }
+
         $this->setPersistentData('user_id', $signed_request['user_id']);
         return $user;
       }
@@ -891,6 +899,10 @@ abstract class BaseFacebook
       $params['access_token'] = $this->getAccessToken();
     }
 
+    if (isset($params['access_token'])) {
+      $params['appsecret_proof'] = $this->getAppSecretProof($params['access_token']);
+    }
+
     // json_encode all params values that are not strings
     foreach ($params as $key => $value) {
       if (!is_string($value)) {
@@ -899,6 +911,19 @@ abstract class BaseFacebook
     }
 
     return $this->makeRequest($url, $params);
+  }
+
+  /**
+   * Generate a proof of App Secret
+   * This is required for all API calls originating from a server
+   * It is a sha256 hash of the access_token made using the app secret
+   *
+   * @param string $access_token The access_token to be hashed (required)
+   *
+   * @return string The sha256 hash of the access_token
+   */
+  protected function getAppSecretProof($access_token) {
+    return hash_hmac('sha256', $access_token, $this->getAppSecret());
   }
 
   /**
@@ -1145,8 +1170,14 @@ abstract class BaseFacebook
       }
       return 'http';
     }
+    /*apache + variants specific way of checking for https*/
     if (isset($_SERVER['HTTPS']) &&
         ($_SERVER['HTTPS'] === 'on' || $_SERVER['HTTPS'] == 1)) {
+      return 'https';
+    }
+    /*nginx way of checking for https*/
+    if (isset($_SERVER['SERVER_PORT']) &&
+        ($_SERVER['SERVER_PORT'] === '443')) {
       return 'https';
     }
     return 'http';

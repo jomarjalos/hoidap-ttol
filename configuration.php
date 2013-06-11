@@ -15,7 +15,7 @@ class JConfig {
 	public $host = 'localhost';
 	public $user = 'root';
 	public $password = '1234';
-	public $db = 'hoidap-ttol';
+	public $db = 'laptrinh_pro_vn';
 	public $dbprefix = 'jos_';
 	public $live_site = '';
 	public $secret = '4CRiwBOcdcrunA7k';
@@ -24,14 +24,14 @@ class JConfig {
 	public $helpurl = 'http://help.joomla.org/proxy/index.php?option=com_help&keyref=Help{major}{minor}:{keyref}';
 	public $ftp_host = '127.0.0.1';
 	public $ftp_port = '21';
-	public $ftp_user = '';
-	public $ftp_pass = '';
+	public $ftp_user = 'admin';
+	public $ftp_pass = 'muinx.,79';
 	public $ftp_root = '';
 	public $ftp_enable = '0';
 	public $offset = 'UTC';
 	public $mailer = 'mail';
 	public $mailfrom = 'nguyenxuanmui@gmail.com';
-	public $fromname = 'Hỏi đáp - ThongtinOnline';
+	public $fromname = 'Há»�i Ä‘Ã¡p - ThongtinOnline';
 	public $sendmail = '/usr/sbin/sendmail';
 	public $smtpauth = '0';
 	public $smtpuser = '';
