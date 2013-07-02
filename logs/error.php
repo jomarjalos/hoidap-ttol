@@ -20,3 +20,4 @@
 2013-04-22	02:10:50	INFO	127.0.0.1	Facebook CANCELED: 	
 2013-06-11	02:02:42	INFO	127.0.0.1	Facebook FAILURE: 	Failed to authenticate: 
 2013-06-11	03:12:14	INFO	127.0.0.1	Facebook FAILURE: 	Failed to authenticate: 
+2013-07-02	07:12:13	INFO	127.0.0.1	Facebook FAILURE: 	Failed to authenticate: 

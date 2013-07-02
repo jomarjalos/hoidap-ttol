@@ -1,0 +1,62 @@
+/**
+ # @package			QE Login with Facebook for Joomla! website
+ # @sub_package		mod_qeloginwfacebook - QE Login with Facebook Module for Joomla! 2.5
+ # @author			NetQ Creative Software
+ # @copyright 		Copyright(C) 2012 QExtension.com. All Rights Reserved.
+ # @license			GNU/GPL version 2 - http://www.gnu.org/licenses/gpl-2.0.html
+ # @website			http://www.qextensions.com
+ # @support			http://www.qextensions.com/forum
+**/
+/**----------------------------------------------------------------------------------------
+ * @file: /assets/css/mod_qeloginwfacebook.css 2.5.0 00001, Apr 2012 12:00:00Z QExtensions $
+ *----------------------------------------------------------------------------------------*/
+
+.mod_loginwfacebook_wrapper {
+	clear: both;
+	overflow: hidden;
+}
+.mod_loginwfacebook_wrapper .user_profile_image {
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 3px;
+}
+.mod_loginwfacebook_wrapper .greeting_name {
+
+}
+.mod_loginwfacebook_wrapper .user_name {
+	line-height: 40px;
+}
+.mod_loginwfacebook_wrapper .logout_form {
+	text-align: center;
+}
+.mod_loginwfacebook_wrapper .notice {
+	font-size: 11px;
+}
+.mod_loginwfacebook_wrapper .loginwfacebook_button {
+	font-size: 12px;
+	color: #FFF;
+	font-weight: bold;
+	background: url('../img/fb_icon.png') no-repeat 0 0;
+	height: 29px;
+	padding: 5px 5px 5px 32px;
+	text-decoration: none;
+	outline: none;
+	border: 0 none;
+	line-height: 25px;
+}
+.mod_loginwfacebook_wrapper input.loginwfacebook_button {
+	height: auto;
+}
+.mod_loginwfacebook_wrapper .loginwfacebook_button span {
+	height: 29px;
+	color: #FFF;
+	line-height: 25px;
+	cursor: pointer;
+}
+.mod_loginwfacebook_wrapper .loginwfacebook_button img {
+	width: 164px;
+	height: 31px;
+}
+.mod_loginwfacebook_wrapper input.loginwfacebook_button {
+	display: inline;
+}
